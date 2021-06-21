@@ -1,10 +1,6 @@
 package com.acul.gui;
 
 import java.util.ArrayList;
-import java.util.TimerTask;
-import java.util.Vector;
-
-import static org.lwjgl.glfw.GLFW.glfwPollEvents;
 
 
 public class RenderLoop {

@@ -9,9 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="007ca02b-0447-4acd-91ca-5121996aeb8f" name="Default Changelist" comment="Initial commit">
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/acul/gui/RenderLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/gui/RenderLoop.java" afterDir="false" />
+    <list default="true" id="007ca02b-0447-4acd-91ca-5121996aeb8f" name="Default Changelist" comment="Updated dependencies">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_lwjgl_lwjgl_ovr_3_2_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gravity.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Gravity.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/acul/gui/TestRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/gui/TestRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/acul/gui/Texture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/gui/Texture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/acul/gui/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/gui/Window.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +55,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.21748714" />
     <property name="project.structure.side.proportion" value="0.3146307" />
     <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
@@ -59,10 +63,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/assets/" />
+      <recent name="$PROJECT_DIR$/resources" />
       <recent name="$PROJECT_DIR$/resources/assets" />
       <recent name="$PROJECT_DIR$/resources/textures" />
       <recent name="$PROJECT_DIR$/resources/shaders" />
-      <recent name="$PROJECT_DIR$/resources" />
     </key>
   </component>
   <component name="RunManager" selected="JAR Application.Gravity">
@@ -130,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624293769497</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Updated dependencies">
+      <created>1624295365686</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1624295365686</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -147,6 +159,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+    <MESSAGE value="Updated dependencies" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated dependencies" />
   </component>
 </project>

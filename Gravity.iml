@@ -26,7 +26,6 @@
     <orderEntry type="library" name="Maven: org.lwjgl:lwjgl-opengl:3.2.3" level="project" />
     <orderEntry type="library" name="Maven: org.lwjgl:lwjgl-opengles:3.2.3" level="project" />
     <orderEntry type="library" name="Maven: org.lwjgl:lwjgl-openvr:3.2.3" level="project" />
-    <orderEntry type="library" name="Maven: org.lwjgl:lwjgl-ovr:3.2.3" level="project" />
     <orderEntry type="library" name="Maven: org.lwjgl:lwjgl-par:3.2.3" level="project" />
     <orderEntry type="library" name="Maven: org.lwjgl:lwjgl-rpmalloc:3.2.3" level="project" />
     <orderEntry type="library" name="Maven: org.lwjgl:lwjgl-sse:3.2.3" level="project" />

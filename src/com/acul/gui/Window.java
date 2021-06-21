@@ -12,6 +12,7 @@ public class Window {
     private final long windowId;
     private Renderer renderer;
 
+
     public Window(String title) throws InitFailureException {
         windowId = glfwCreateWindow(1280,720, title, NULL, NULL);
         if (windowId == NULL) {
@@ -23,6 +24,7 @@ public class Window {
     public void setActive() {
         glfwMakeContextCurrent(windowId);
         GL.createCapabilities();
+
     }
 
     public boolean shouldClose() {

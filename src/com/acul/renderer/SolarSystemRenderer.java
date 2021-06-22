@@ -52,7 +52,8 @@ public class SolarSystemRenderer extends OrthographicRenderer {
             float size = m.getSize();
             float posX = m.getPosX() - size/2;
             float posY = m.getPosY() - size/2;
-            tex.draw(posX, posY, size);
+            float rotation = m.getRotation();
+            tex.draw(posX, posY, size, 0 , rotation);
         }
     }
 

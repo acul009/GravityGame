@@ -5,6 +5,8 @@ import com.acul.gui.Window;
 import java.util.HashSet;
 import java.util.Vector;
 
+import static org.lwjgl.glfw.GLFW.*;
+
 public class Game {
 
     private final Window window;
@@ -23,7 +25,7 @@ public class Game {
     }
 
     private void addPlanets() {
-        planets.add(new Planet(0,70,50,7,"Terran.png"));
+        planets.add(new Planet(0, 70, 50, 7, "Terran.png"));
     }
 
     public Vector<Planet> getPlanets() {
@@ -36,10 +38,10 @@ public class Game {
 
     public String[] getAllTextureNames() {
         HashSet<String> textures = new HashSet<>();
-        for (Planet p: planets) {
+        for (Planet p : planets) {
             textures.add(p.getTextureName());
         }
-        for (MobileEntity m: mobiles) {
+        for (MobileEntity m : mobiles) {
             textures.add(m.getTextureName());
         }
         String[] texArray = new String[textures.size()];
@@ -48,15 +50,14 @@ public class Game {
     }
 
     private void addPlayer() {
-        player = new Player(0,0);
+        player = new Player(0, 0);
         mobiles.add(player);
     }
 
     public void runGameTick() {
-        System.out.println("Running Tick");
         applyPlayerControl();
-        for (MobileEntity m:mobiles) {
-            for (Planet p:planets) {
+        for (MobileEntity m : mobiles) {
+            for (Planet p : planets) {
                 p.affect(m);
             }
             m.moveBySpeed();
@@ -64,8 +65,8 @@ public class Game {
     }
 
     private void applyPlayerControl() {
-        double[] mousePos = window.getMousePos();
-        System.out.println("MouseX: " + mousePos[0] + ", MouseY: "+ mousePos[1]);
+        double[] mousePos = window.getRelativeMousePos();
+        player.pointTowards((float) mousePos[0], (float) mousePos[1], window.getMouseButtonState(GLFW_MOUSE_BUTTON_LEFT));
     }
 
 

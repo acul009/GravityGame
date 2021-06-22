@@ -4,6 +4,7 @@ import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL;
 
 import java.nio.DoubleBuffer;
+import java.nio.IntBuffer;
 
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
@@ -57,5 +58,26 @@ public class Window {
         glfwGetCursorPos(windowId, bufferX, bufferY);
 
         return new double[]{bufferX.get(0), bufferY.get(0)};
+    }
+
+    public double[] getRelativeMousePos() {
+        double[] mousePos = getMousePos();
+        int[] windowSize = getWindowSize();
+        double[] relativePos = new double[mousePos.length];
+        for(int i = 0; i < mousePos.length; i++) {
+            relativePos[i] = mousePos[i] - (float)windowSize[i] / 2;
+        }
+        return relativePos;
+    }
+
+    public int[] getWindowSize() {
+        IntBuffer width = BufferUtils.createIntBuffer(1);
+        IntBuffer height = BufferUtils.createIntBuffer(1);
+        glfwGetWindowSize(windowId, width, height);
+        return new int[]{width.get(0), height.get(0)};
+    }
+
+    public boolean getMouseButtonState(int buttonId) {
+        return glfwGetMouseButton(windowId, buttonId) == 1;
     }
 }

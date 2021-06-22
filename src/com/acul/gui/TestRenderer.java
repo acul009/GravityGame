@@ -1,12 +1,15 @@
 package com.acul.gui;
 
 import static org.lwjgl.opengl.GL11.*;
+import java.util.Date;
 
 public class TestRenderer extends Renderer {
 
     Window win;
     Texture tex;
     double width,height;
+    int position = 0;
+    long lastRun ;
 
     public TestRenderer(Window win) {
         super(win);
@@ -20,6 +23,8 @@ public class TestRenderer extends Renderer {
         glEnable(GL_DEPTH_TEST);
         glDepthFunc(GL_ALWAYS);
 
+        long lastRun = (new Date()).getTime();
+
         try {
             tex = new Texture("img.png");
         } catch (InitFailureException e) {
@@ -30,10 +35,13 @@ public class TestRenderer extends Renderer {
 
     @Override
     public void render() {
-        super.render();
         glClearColor(0, 0, 0, 1f);
         //tex.draw(10, 10, 20, 0, 0);
-        tex.draw(10, 10, 20, 0, 90);
+        tex.draw(position, 10, 20, 0, 0);
+        position +=1;
+        long newStamp = (new Date()).getTime();
+        System.out.println("Time: " + (newStamp-lastRun));
+        lastRun = newStamp;
         /*
         tex.activate();
         glEnable(GL_TEXTURE_2D);

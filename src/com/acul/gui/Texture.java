@@ -45,11 +45,11 @@ public class Texture {
         int[] converted = new int[original.length];
         for (int i = 0; i < original.length; i++) {
             int pixel = original[i];
-            a = (pixel & 0b11111111);
-            r = ((pixel >> 8) & 0b11111111);
-            g = ((pixel >> 16) & 0b11111111);
-            b = ((pixel >> 24) & 0b11111111);
-            converted[i] = (b) + (g << 8) + (r << 16) + (a << 24);
+            b = (pixel & 0b11111111);
+            g = ((pixel >> 8) & 0b11111111);
+            r = ((pixel >> 16) & 0b11111111);
+            a = ((pixel >> 24) & 0b11111111);
+            converted[i] = (r) + (g << 8) + (b << 16) + (a << 24);
         }
         return converted;
     }
@@ -101,10 +101,14 @@ public class Texture {
             double diag = Math.sqrt(height * height + width * width);
             double startSin = height/diag;
             double startRotation = Math.asin(startSin);
+
+
             double endRotation1 = startRotation + rad;
             double endRotation2 = -startRotation + rad;
-            float offsetY1 = (float)(Math.sin(endRotation1) * diag/2) - height/2;
-            float offsetX1 = (float)(Math.cos(endRotation1) * diag/2) - width/2;
+
+
+            float offsetY1 = (float)((Math.sin(endRotation1) * diag) - height)/2;
+            float offsetX1 = (float)((Math.cos(endRotation1) * diag) - width)/2;
             posY1 -= offsetY1;
             posX1 -= offsetX1;
             posY3 += offsetY1;
@@ -112,8 +116,6 @@ public class Texture {
 
             float offsetY2 = (float)(Math.sin(endRotation2) * diag/2) + height/2;
             float offsetX2 = (float)(Math.cos(endRotation2) * diag/2) - width/2;
-            System.out.println(offsetY2);
-            System.out.println(offsetX1);
             posY2 -= offsetY2;
             posX2 -= offsetX2;
             posY4 += offsetY2;

@@ -46,7 +46,7 @@ public class Application implements Runnable{
             glfwPollEvents();
             closeWindows();
             try {
-                sleep(100);
+                sleep(1000 / fps);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

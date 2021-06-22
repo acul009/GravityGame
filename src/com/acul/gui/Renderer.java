@@ -9,7 +9,5 @@ public abstract class Renderer {
         win.setRenderer(this);
     }
 
-    public void render() {
-
-    }
+    public abstract void render();
 }

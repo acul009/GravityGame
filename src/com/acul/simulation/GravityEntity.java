@@ -2,17 +2,21 @@ package com.acul.simulation;
 
 public abstract class GravityEntity extends Entity {
 
-    private static final long gravConstant = 1;
+    private static final float gravConstant = 1;
+
+    public GravityEntity(float posX, float posY, float size, float mass, String textureName) {
+        super(posX, posY, size, mass, textureName);
+    }
 
     public void affect(MobileEntity ent) {
-        long distX = ent.getPosX() - this.getPosX();
-        long distY = ent.getPosY() - this.getPosY();
-        long totalDist = (long) Math.sqrt(distX * distX + distY * distY);
-        long totalAcceleration = (this.getMass() * gravConstant) / (totalDist * totalDist);
-        float factorX = (float) distX / (float) totalDist;
-        float factorY = (float) distY / (float) totalDist;
-        long accelerationX = (long) (totalAcceleration * factorX);
-        long accelerationY = (long) (totalAcceleration * factorY);
+        float distX =  this.getPosX() - ent.getPosX();
+        float distY = this.getPosY() - ent.getPosY();
+        float totalDist = (float) Math.sqrt(distX * distX + distY * distY);
+        float totalAcceleration = (this.getMass() * gravConstant) / (totalDist * totalDist);
+        float factorX = distX /  totalDist;
+        float factorY =  distY /  totalDist;
+        float accelerationX =  (totalAcceleration * factorX);
+        float accelerationY =  (totalAcceleration * factorY);
         ent.accelerateBy(accelerationX, accelerationY);
     }
 

@@ -2,30 +2,34 @@ package com.acul.simulation;
 
 public abstract class MobileEntity extends Entity {
 
-    private long speedX, speedY;
+    private float speedX, speedY;
 
-    void moveBySpeed() {
+    public MobileEntity(float posX, float posY, float size, float mass, String textureName) {
+        super(posX, posY, size, mass, textureName);
+    }
+
+    public void moveBySpeed() {
         this.moveBy(this.speedX, this.speedY);
     }
 
-    public long getSpeedX() {
+    public float getSpeedX() {
         return speedX;
     }
 
-    public void setSpeedX(long speedX) {
+    public void setSpeedX(float speedX) {
         this.speedX = speedX;
     }
 
-    public long getSpeedY() {
+    public float getSpeedY() {
         return speedY;
     }
 
-    public void setSpeedY(long speedY) {
+    public void setSpeedY(float speedY) {
         this.speedY = speedY;
     }
 
-    public synchronized void accelerateBy(long x, long y) {
+    public synchronized void accelerateBy(float x, float y) {
         this.setSpeedX(this.getSpeedX() + x);
-        this.setSpeedY(this.getSpeedX() + y);
+        this.setSpeedY(this.getSpeedY() + y);
     }
 }

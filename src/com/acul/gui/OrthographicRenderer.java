@@ -4,18 +4,36 @@ import static org.lwjgl.opengl.GL11.*;
 
 public abstract class OrthographicRenderer extends Renderer{
 
-    private double posX,posY,width,height;
+    private double posX,posY,width,height, ratio;
 
     public OrthographicRenderer(Window win) {
         super(win);
-        width = 100d;
-        height = width / 16 * 9;
+        setAspectRation(16d/9d);
+        setCameraHeight(100);
         this.setCameraPos(0,0);
     }
 
     protected void setCameraPos(double posX, double posY) {
         this.posX = posX;
         this.posY = posY;
+    }
+
+    protected void setCameraHeight(double height) {
+        this.height = height;
+        this.width = height*ratio;
+    }
+
+    protected double getCameraHeight() {
+        return height;
+    }
+
+    protected double getCameraWidth() {
+        return width;
+    }
+
+    public void setAspectRation(double ratio) {
+        this.ratio = ratio;
+        this.setCameraHeight(height);
     }
 
     @Override

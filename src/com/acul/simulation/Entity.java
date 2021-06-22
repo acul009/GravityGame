@@ -2,50 +2,55 @@ package com.acul.simulation;
 
 public abstract class Entity {
 
-    private long posX, posY, sizeX, sizeY, mass;
+    private float posX, posY, size, mass;
+    private String textureName;
 
-    public long getSizeY() {
-        return sizeY;
+    public Entity(float posX, float posY, float size, float mass, String textureName) {
+        this.posX = posX;
+        this.posY = posY;
+        this.size = size;
+        this.mass = mass;
+        this.textureName = textureName;
     }
 
-    public void setSizeY(long sizeY) {
-        this.sizeY = sizeY;
+    public float getSize() {
+        return size;
     }
 
-    public long getSizeX() {
-        return sizeX;
+    public void setSize(float size) {
+        this.size = size;
     }
 
-    public void setSizeX(long sizeX) {
-        this.sizeX = sizeX;
-    }
-
-    public long getPosX() {
+    public float getPosX() {
         return posX;
     }
 
-    public void setPosX(long posX) {
+    public void setPosX(float posX) {
         this.posX = posX;
     }
 
-    public long getPosY() {
+    public float getPosY() {
         return posY;
     }
 
-    public void setPosY(long posY) {
+    public void setPosY(float posY) {
         this.posY = posY;
     }
 
-    public long getMass() {
+    public float getMass() {
         return mass;
     }
 
-    public void setMass(long mass) {
+    public void setMass(float mass) {
         this.mass = mass;
     }
 
-    public synchronized void moveBy(long x, long y) {
+    public synchronized void moveBy(float x, float y) {
         this.setPosX(this.getPosX() + x);
         this.setPosY(this.getPosY() + y);
+    }
+
+    public String getTextureName() {
+        return textureName;
     }
 }

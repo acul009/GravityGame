@@ -9,20 +9,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="007ca02b-0447-4acd-91ca-5121996aeb8f" name="Default Changelist" comment="Updated dependencies">
-      <change afterPath="$PROJECT_DIR$/resources/assets/textures/Baren.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/textures/Ice.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/textures/Lava.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/textures/Terran.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/acul/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/acul/gui/OrthographicRenderer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/acul/renderer/SolarSystemRenderer.java" afterDir="false" />
+    <list default="true" id="007ca02b-0447-4acd-91ca-5121996aeb8f" name="Default Changelist" comment="Created Code for gravity and rendering from simulation and prepared playerControl">
+      <change afterPath="$PROJECT_DIR$/src/com/acul/simulation/GameTimerTask.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/acul/simulation/Planet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/acul/simulation/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/acul/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/simulation/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/acul/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/Initializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/acul/gui/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/gui/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/acul/gui/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/gui/Renderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/acul/gui/TestRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/gui/TestRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/acul/gui/Texture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/gui/Texture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/acul/gui/OrthographicRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/gui/OrthographicRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/acul/gui/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/gui/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/acul/renderer/SolarSystemRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/renderer/SolarSystemRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/acul/simulation/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/simulation/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/acul/simulation/GravityEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/simulation/GravityEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/acul/simulation/MobileEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/simulation/MobileEntity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +68,9 @@
     <property name="settings.editor.splitter.proportion" value="0.26752022" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.acul.simulation" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/assets/textures" />
     </key>
@@ -86,7 +88,7 @@
       <module name="Gravity" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.acul.*" />
+          <option name="PATTERN" value="com.acul.simulation.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -170,6 +172,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Updated dependencies" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated dependencies" />
+    <MESSAGE value="Created Code for gravity and rendering from simulation and prepared playerControl" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created Code for gravity and rendering from simulation and prepared playerControl" />
   </component>
 </project>

@@ -2,7 +2,8 @@ package com.acul.simulation;
 
 import com.acul.gui.Window;
 
-import java.util.HashSet;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Vector;
 
 import static org.lwjgl.glfw.GLFW.*;
@@ -10,7 +11,7 @@ import static org.lwjgl.glfw.GLFW.*;
 public class Game {
 
     private final Window window;
-    private final Vector<Planet> planets = new Vector<>();
+    private final Vector<GravityEntity> planets = new Vector<>();
     private final Vector<MobileEntity> mobiles = new Vector<>();
     private Player player;
 
@@ -28,7 +29,7 @@ public class Game {
         planets.add(new Planet(0, 70, 50, 7, "Terran.png"));
     }
 
-    public Vector<Planet> getPlanets() {
+    public Vector<GravityEntity> getPlanets() {
         return planets;
     }
 
@@ -36,17 +37,15 @@ public class Game {
         return mobiles;
     }
 
-    public String[] getAllTextureNames() {
-        HashSet<String> textures = new HashSet<>();
-        for (Planet p : planets) {
-            textures.add(p.getTextureName());
+    public Map<String, Integer> getAllTextureNames() {
+        HashMap<String, Integer> textures = new HashMap<>();
+        for (GravityEntity p : planets) {
+            textures.put(p.getTextureName(), 1);
         }
         for (MobileEntity m : mobiles) {
-            textures.add(m.getTextureName());
+            textures.put(m.getTextureName(), m.getStateAmount());
         }
-        String[] texArray = new String[textures.size()];
-        textures.toArray(texArray);
-        return texArray;
+        return textures;
     }
 
     private void addPlayer() {
@@ -57,16 +56,18 @@ public class Game {
     public void runGameTick() {
         applyPlayerControl();
         for (MobileEntity m : mobiles) {
-            for (Planet p : planets) {
-                p.affect(m);
-            }
-            m.moveBySpeed();
+            m.calculateNextPos(planets);
         }
     }
 
     private void applyPlayerControl() {
         double[] mousePos = window.getRelativeMousePos();
-        player.pointTowards((float) mousePos[0], (float) mousePos[1], window.getMouseButtonState(GLFW_MOUSE_BUTTON_LEFT));
+        player.pointTowards(
+                (float) mousePos[0],
+                (float) mousePos[1],
+                window.getMouseButtonState(GLFW_MOUSE_BUTTON_LEFT),
+                window.getMouseButtonState(GLFW_MOUSE_BUTTON_RIGHT)
+        );
     }
 
 

@@ -4,13 +4,11 @@ import com.acul.gui.InitFailureException;
 import com.acul.gui.OrthographicRenderer;
 import com.acul.gui.Texture;
 import com.acul.gui.Window;
-import com.acul.simulation.Game;
-import com.acul.simulation.MobileEntity;
-import com.acul.simulation.Planet;
-import com.acul.simulation.Player;
+import com.acul.simulation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Vector;
 
 public class SolarSystemRenderer extends OrthographicRenderer {
@@ -35,8 +33,8 @@ public class SolarSystemRenderer extends OrthographicRenderer {
     }
 
     private void renderPlanets() {
-        Vector<Planet> planets = game.getPlanets();
-        for (Planet p : planets) {
+        Vector<GravityEntity> planets = game.getPlanets();
+        for (GravityEntity p : planets) {
             Texture tex = textures.get(p.getTextureName());
             float size = p.getSize();
             float posX = p.getPosX() - size/2;
@@ -53,15 +51,15 @@ public class SolarSystemRenderer extends OrthographicRenderer {
             float posX = m.getPosX() - size/2;
             float posY = m.getPosY() - size/2;
             float rotation = m.getRotation();
-            tex.draw(posX, posY, size, 0 , rotation);
+            tex.draw(posX, posY, size, m.getState() , rotation);
         }
     }
 
     private void loadTextures() {
-        String[] textureNames = game.getAllTextureNames();
-        for (String texName : textureNames) {
+        Map<String, Integer> textureNames = game.getAllTextureNames();
+        for (String texName : textureNames.keySet()) {
             try {
-                textures.put(texName, new Texture(texName));
+                textures.put(texName, new Texture(texName, textureNames.get(texName)));
             } catch (InitFailureException e) {
                 e.printStackTrace();
             }

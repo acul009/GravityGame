@@ -80,14 +80,14 @@ public class Texture {
         float texStartY = 0;
         float texEndY = 1;
 
-        float width = (height / this.getHeight() * this.getWidth());
+        float width = (height * this.frameWidth / this.getHeight() );
 
         float posX1 = 0;
         float posX2 = posX1;
-        float posX3 = posX1 + height;
+        float posX3 = posX1 + width;
         float posX4 = posX3;
         float posY1 = 0;
-        float posY2 = posY1 + width;
+        float posY2 = posY1 + height;
         float posY3 = posY2;
         float posY4 = posY1;
 

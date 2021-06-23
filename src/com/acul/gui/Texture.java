@@ -14,14 +14,14 @@ public class Texture {
     private int textureID;
     private int frameWidth;
 
-    private static final String shaderLocation = "/textures/";
+    private static final String textureLocation = "/textures/";
 
     public Texture(String name) throws InitFailureException {
         this(name, 1);
     }
 
     public Texture(String name, int frames) throws InitFailureException {
-        BufferedImage img = AssetUtils.loadImage(shaderLocation + name);
+        BufferedImage img = AssetUtils.loadImage(textureLocation + name);
         if (img == null) {
             throw new InitFailureException("Texture could not be loaded!");
         }

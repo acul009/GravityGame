@@ -9,16 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="007ca02b-0447-4acd-91ca-5121996aeb8f" name="Default Changelist" comment="rendering">
-      <change afterPath="$PROJECT_DIR$/resources/assets/textures/spaceship.png" afterDir="false" />
+    <list default="true" id="007ca02b-0447-4acd-91ca-5121996aeb8f" name="Default Changelist" comment="Gravity and Ship alignment now working">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/acul/gui/Texture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/gui/Texture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/acul/renderer/SolarSystemRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/renderer/SolarSystemRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/acul/simulation/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/simulation/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/acul/simulation/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/simulation/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/acul/simulation/GravityEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/simulation/GravityEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/acul/simulation/MobileEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/simulation/MobileEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/acul/simulation/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/simulation/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/acul/utils/AssetUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/utils/AssetUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,16 +38,6 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/com/acul/gui/TestRenderer.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/com/acul/renderer/SolarSystemRenderer.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/com/acul/gui/Texture.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/com/acul/gui/Application.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/com/acul/gui/Renderer.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/com/acul/gui/OrthographicRenderer.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/com/acul/Initializer.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/com/acul/AsteroidsMain.java" root0="FORCE_HIGHLIGHTING" />
-  </component>
   <component name="ProjectId" id="1sq7JDOxzUBSBlablEFxM6UHHJR" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -75,6 +59,9 @@
     <property name="settings.editor.splitter.proportion" value="0.26752022" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.acul.simulation" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/assets/textures" />
     </key>
@@ -92,7 +79,7 @@
       <module name="Gravity" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.acul.*" />
+          <option name="PATTERN" value="com.acul.simulation.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -158,14 +145,21 @@
       <option name="project" value="LOCAL" />
       <updated>1624295365686</updated>
     </task>
-    <task id="LOCAL-00003" summary="rendering">
-      <created>1624355932338</created>
+    <task id="LOCAL-00003" summary="Created Code for gravity and rendering from simulation and prepared playerControl">
+      <created>1624386670826</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1624355932338</updated>
+      <updated>1624386670826</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Gravity and Ship alignment now working">
+      <created>1624396276652</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1624396276652</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -183,7 +177,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Updated dependencies" />
-    <MESSAGE value="rendering" />
-    <option name="LAST_COMMIT_MESSAGE" value="rendering" />
+    <MESSAGE value="Created Code for gravity and rendering from simulation and prepared playerControl" />
+    <MESSAGE value="Gravity and Ship alignment now working" />
+    <option name="LAST_COMMIT_MESSAGE" value="Gravity and Ship alignment now working" />
   </component>
 </project>

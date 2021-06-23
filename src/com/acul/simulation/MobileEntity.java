@@ -46,7 +46,7 @@ public abstract class MobileEntity extends Entity {
 
     public float getRotation() {
         float rotation = -(float) Math.toDegrees(Math.atan(factorX / factorY));
-        if (factorY > 0) {
+        if (factorY >= 0) {
             rotation -= 180;
         }
         return rotation;

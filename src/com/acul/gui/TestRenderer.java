@@ -40,7 +40,6 @@ public class TestRenderer extends Renderer {
         tex.draw(position, 10, 20, 0, 0);
         position +=1;
         long newStamp = (new Date()).getTime();
-        System.out.println("Time: " + (newStamp-lastRun));
         lastRun = newStamp;
         /*
         tex.activate();

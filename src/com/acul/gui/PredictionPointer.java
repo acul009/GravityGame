@@ -12,15 +12,16 @@ public class PredictionPointer {
         float offsetX = widthFactor * height;
 
         glLoadIdentity();
-        System.out.println("X: " + pos.X + ", Y: " + pos.Y);
-        //glRotatef(rotation, 0f, 0f, 1f);
         glTranslatef(pos.X , pos.Y , 0);
+        glRotatef(rotation, 0f, 0f, 1f);
 
+        glColor3f(0,1,0);
         glBegin(GL_TRIANGLES);
-        glVertex2f(height/2, 0);
+        glVertex2f(0, height/2);
         glVertex2f(-offsetX, -height/2);
         glVertex2f(offsetX, -height/2);
         glEnd();
+        glColor3f(1,1,1);
     }
 
 }

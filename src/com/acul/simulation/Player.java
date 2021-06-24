@@ -2,11 +2,12 @@ package com.acul.simulation;
 
 public class Player extends MobileEntity {
 
-    private static float acceleration = 0.003f;
+    private static float acceleration = 0.001f;
 
     public Player(Vektor2f pos) {
         super(pos, 5, "spaceship.png");
-        setPredictionTicks(200);
+        setMaxPredictionTicks(5000);
+        setMinPredictionTicks(300);
     }
 
     public void pointTowards(Vektor2f pos, boolean accelerate, boolean fire) {

@@ -38,4 +38,8 @@ public class Vektor2f {
     public Vektor2f scale(float scalar) {
         return new Vektor2f(X*scalar, Y*scalar);
     }
+
+    public float getLength() {
+        return (float) Math.sqrt(X*X + Y*Y);
+    }
 }

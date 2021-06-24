@@ -2,6 +2,8 @@ package com.acul.gui;
 
 import com.acul.simulation.Vektor2f;
 import org.lwjgl.BufferUtils;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWScrollCallback;
 import org.lwjgl.opengl.GL;
 
 import java.nio.DoubleBuffer;
@@ -16,6 +18,7 @@ public class Window {
 
     private long windowId;
     private Renderer renderer;
+    private Scrolldetector scroll;
 
 
     public Window(String title) throws InitFailureException {
@@ -23,6 +26,9 @@ public class Window {
         if (windowId == NULL) {
             throw new InitFailureException("Unable to create the Window \"" + title + "\"");
         }
+
+        scroll = new Scrolldetector();
+        org.lwjgl.glfw.GLFW.glfwSetScrollCallback(windowId, scroll);
     }
 
 
@@ -76,5 +82,9 @@ public class Window {
 
     public boolean getMouseButtonState(int buttonId) {
         return glfwGetMouseButton(windowId, buttonId) == 1;
+    }
+
+    public int getScrollDiff() {
+        return this.scroll.getScrollDiff();
     }
 }

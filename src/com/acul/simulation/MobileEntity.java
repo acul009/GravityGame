@@ -1,16 +1,18 @@
 package com.acul.simulation;
 
 import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Vector;
 
 public abstract class MobileEntity extends Entity {
 
     private Vektor2f speed = new Vektor2f(), factor = new Vektor2f();
     private int state = 0;
-    private int predictionTicks = 0;
+    private int maxPredictionTicks = 0;
+    private int minPredictionTicks = 100;
     private LinkedList<Vektor2f> posPrediction = null;
     private LinkedList<Vektor2f> speedPrediction = null;
+    private boolean flushPrediction = false;
+    private Vektor2f[] posPredictionArray = new Vektor2f[0], speedPredictionArray = new Vektor2f[0];
 
     public MobileEntity(Vektor2f pos, float size, String textureName) {
         super(pos, size, textureName);
@@ -28,7 +30,7 @@ public abstract class MobileEntity extends Entity {
     }
 
     public void calculateNextPos(Vector<GravityEntity> planets) {
-        if (posPrediction == null || posPrediction.size() == 0) {
+        if (posPrediction == null || posPrediction.size() == 0 || flushPrediction) {
             for (int i = 0; i < planets.size(); i++) {
                 Vektor2f acc = planets.get(i).calculateAccelerationForPos(this.getPos());
                 this.accelerateBy(acc);
@@ -42,33 +44,45 @@ public abstract class MobileEntity extends Entity {
     }
 
     protected void flushPrediction() {
-        posPrediction = new LinkedList<>();
-        speedPrediction = new LinkedList<>();
+        flushPrediction = true;
     }
 
     private void calculatePrediction(Vector<GravityEntity> planets) {
-        if (predictionTicks < 1) return;
-        if (posPrediction == null) {
-            flushPrediction();
+        if (maxPredictionTicks < 1) return;
+        LinkedList<Vektor2f> posPrediction, speedPrediction;
+        if (this.posPrediction == null || flushPrediction) {
+            flushPrediction = false;
+            posPrediction = new LinkedList<>();
+            speedPrediction = new LinkedList<>();
+        } else {
+            posPrediction = this.posPrediction;
+            speedPrediction = this.speedPrediction;
         }
-        if (posPrediction.size() < predictionTicks) {
+        if (posPrediction.size() < maxPredictionTicks) {
             Vektor2f pos, speed;
-            if(posPrediction.size() == 0) {
+            if (posPrediction.size() == 0) {
                 pos = getPos();
                 speed = getSpeed();
             } else {
                 pos = posPrediction.getLast();
                 speed = speedPrediction.getLast();
             }
-            while (posPrediction.size() < predictionTicks) {
+            int i = 0;
+            while (posPrediction.size() < maxPredictionTicks && (posPrediction.size() < minPredictionTicks || i++ < 5)) {
                 Vektor2f acc = new Vektor2f();
-                for (GravityEntity p: planets) {
+                for (GravityEntity p : planets) {
                     speed = speed.add(p.calculateAccelerationForPos(pos));
                 }
                 pos = pos.add(speed);
                 posPrediction.add(pos);
                 speedPrediction.add(speed);
             }
+            this.posPrediction = posPrediction;
+            this.speedPrediction = speedPrediction;
+            posPredictionArray = new Vektor2f[posPrediction.size()];
+            posPredictionArray = posPrediction.toArray(posPredictionArray);
+            speedPredictionArray = new Vektor2f[posPrediction.size()];
+            speedPredictionArray = posPrediction.toArray(speedPredictionArray);
         }
     }
 
@@ -84,15 +98,15 @@ public abstract class MobileEntity extends Entity {
         return 1;
     }
 
-    public int getPredictionTicks() {
-        return predictionTicks;
+    public int getMaxPredictionTicks() {
+        return maxPredictionTicks;
     }
 
-    public void setPredictionTicks(int predictionTicks) {
+    public void setMaxPredictionTicks(int predictionTicks) {
         if (predictionTicks > 0 && posPrediction == null) {
             flushPrediction();
         }
-        this.predictionTicks = predictionTicks;
+        this.maxPredictionTicks = predictionTicks;
     }
 
     public Vektor2f getSpeed() {
@@ -111,11 +125,19 @@ public abstract class MobileEntity extends Entity {
         this.factor = factor;
     }
 
-    public LinkedList<Vektor2f> getPosPrediction() {
-        return posPrediction;
+    public Vektor2f[] getPosPrediction() {
+        return posPredictionArray;
     }
 
-    public LinkedList<Vektor2f> getSpeedPrediction() {
-        return speedPrediction;
+    public Vektor2f[] getSpeedPrediction() {
+        return speedPredictionArray;
+    }
+
+    public int getMinPredictionTicks() {
+        return minPredictionTicks;
+    }
+
+    public void setMinPredictionTicks(int minPredictionTicks) {
+        this.minPredictionTicks = minPredictionTicks;
     }
 }

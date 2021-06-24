@@ -2,7 +2,7 @@ package com.acul.gui;
 
 public abstract class Renderer {
 
-    Window win;
+    private Window win;
 
     public Renderer(Window win) {
         this.win = win;
@@ -10,4 +10,8 @@ public abstract class Renderer {
     }
 
     public abstract void render();
+
+    public Window getWindow() {
+        return win;
+    }
 }

@@ -4,27 +4,24 @@ public class Player extends MobileEntity {
 
     private static float acceleration = 0.003f;
 
-    public Player(float posX, float posY) {
-        super(posX, posY, 5, "spaceship.png");
-        //setPredictionTicks(20);
+    public Player(Vektor2f pos) {
+        super(pos, 5, "spaceship.png");
+        setPredictionTicks(200);
     }
 
-    public void pointTowards(float posX, float posY, boolean accelerate, boolean fire) {
-        float totalDist = (float) Math.sqrt(posX * posX + posY * posY);
-        float factorX = posX / totalDist;
-        float factorY = posY / totalDist;
-        this.setFactors(factorX,factorY);
+    public void pointTowards(Vektor2f pos, boolean accelerate, boolean fire) {
+        Vektor2f factor = pos.normalize();
+        setFactor(factor);
         if(accelerate) {
             this.setState(1);
-            accelerateTowards(factorX, factorY);
+            accelerateTowards(factor.scale(acceleration));
         } else {
             setState(0);
         }
     }
 
-    private void accelerateTowards(float factorX, float factorY) {
-
-        this.accelerateBy(factorX * acceleration, factorY * acceleration);
+    private void accelerateTowards(Vektor2f factor) {
+        this.accelerateBy(factor);
     }
 
     @Override

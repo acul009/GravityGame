@@ -1,5 +1,6 @@
 package com.acul.gui;
 
+import com.acul.simulation.Vektor2f;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL;
 
@@ -52,22 +53,18 @@ public class Window {
         this.setActive();
     }
 
-    public double[] getMousePos() {
+    public Vektor2f getMousePos() {
         DoubleBuffer bufferX = BufferUtils.createDoubleBuffer(1);
         DoubleBuffer bufferY = BufferUtils.createDoubleBuffer(1);
         glfwGetCursorPos(windowId, bufferX, bufferY);
 
-        return new double[]{bufferX.get(0), bufferY.get(0)};
+        return new Vektor2f((float) bufferX.get(0), (float) bufferY.get(0));
     }
 
-    public double[] getRelativeMousePos() {
-        double[] mousePos = getMousePos();
+    public Vektor2f getRelativeMousePos() {
+        Vektor2f mousePos = getMousePos();
         int[] windowSize = getWindowSize();
-        double[] relativePos = new double[mousePos.length];
-        for(int i = 0; i < mousePos.length; i++) {
-            relativePos[i] = mousePos[i] - (float)windowSize[i] / 2;
-        }
-        return relativePos;
+        return new Vektor2f(mousePos.X - (float)windowSize[0]/2, mousePos.Y - (float)windowSize[1]/2);
     }
 
     public int[] getWindowSize() {

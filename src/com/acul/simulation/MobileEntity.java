@@ -6,96 +6,68 @@ import java.util.Vector;
 
 public abstract class MobileEntity extends Entity {
 
-    private float speedX, speedY, factorX, factorY, speedPredictionX, speedPredictionY;
+    private Vektor2f speed = new Vektor2f(), factor = new Vektor2f();
     private int state = 0;
     private int predictionTicks = 0;
-    private LinkedList<float[]> posPrediction = null;
+    private LinkedList<Vektor2f> posPrediction = null;
+    private LinkedList<Vektor2f> speedPrediction = null;
 
-    public MobileEntity(float posX, float posY, float size, String textureName) {
-        super(posX, posY, size, textureName);
+    public MobileEntity(Vektor2f pos, float size, String textureName) {
+        super(pos, size, textureName);
     }
 
-    public float getSpeedX() {
-        return speedX;
-    }
-
-    public void setSpeedX(float speedX) {
-        this.speedX = speedX;
-    }
-
-    public float getSpeedY() {
-        return speedY;
-    }
-
-    public void setSpeedY(float speedY) {
-        this.speedY = speedY;
-    }
-
-    public synchronized void accelerateBy(float x, float y) {
-        this.setSpeedX(this.getSpeedX() + x);
-        this.setSpeedY(this.getSpeedY() + y);
+    public synchronized void accelerateBy(Vektor2f acc) {
+        this.setSpeed(this.getSpeed().add(acc));
         if (posPrediction != null) {
             flushPrediction();
         }
     }
 
-    public void setFactors(float factorX, float factorY) {
-        this.factorX = factorX;
-        this.factorY = factorY;
-    }
-
     public float getRotation() {
-        float rotation = -(float) Math.toDegrees(Math.atan(factorX / factorY));
-        if (factorY >= 0) {
-            rotation -= 180;
-        }
-        return rotation;
+        return factor.getRotation();
     }
 
     public void calculateNextPos(Vector<GravityEntity> planets) {
         if (posPrediction == null || posPrediction.size() == 0) {
             for (int i = 0; i < planets.size(); i++) {
-                float[] acc = planets.get(i).calculateAccelerationForPos(this.getPosX(), this.getPosY());
-                this.accelerateBy(acc[0], acc[1]);
+                Vektor2f acc = planets.get(i).calculateAccelerationForPos(this.getPos());
+                this.accelerateBy(acc);
             }
-            moveBy(speedX, speedY);
+            this.moveBy(this.getSpeed());
         } else {
-            float[] pos = posPrediction.remove();
-            setPosX(pos[0]);
-            setPosY(pos[1]);
-            if(posPrediction.size() == 0) {
-
-            }
+            setPos(posPrediction.remove());
+            setSpeed(speedPrediction.remove());
         }
         calculatePrediction(planets);
     }
 
     protected void flushPrediction() {
         posPrediction = new LinkedList<>();
+        speedPrediction = new LinkedList<>();
     }
 
     private void calculatePrediction(Vector<GravityEntity> planets) {
-        if(posPrediction == null) {
-            return;
-        }
-        float[] lastPos;
-        if (posPrediction.size() == 0) {
-            speedPredictionX = getSpeedX();
-            speedPredictionY = getSpeedY();
-            lastPos = new float[]{getPosX(), getPosY()};
-        } else {
-            lastPos = posPrediction.getLast();
+        if (predictionTicks < 1) return;
+        if (posPrediction == null) {
+            flushPrediction();
         }
         if (posPrediction.size() < predictionTicks) {
+            Vektor2f pos, speed;
+            if(posPrediction.size() == 0) {
+                pos = getPos();
+                speed = getSpeed();
+            } else {
+                pos = posPrediction.getLast();
+                speed = speedPrediction.getLast();
+            }
             while (posPrediction.size() < predictionTicks) {
-                for (GravityEntity p : planets) {
-                    float[] acc = p.calculateAccelerationForPos(lastPos[0], lastPos[1]);
-                    speedPredictionX += acc[0];
-                    speedPredictionY += acc[1];
+                Vektor2f acc = new Vektor2f();
+                for (GravityEntity p: planets) {
+                    speed = speed.add(p.calculateAccelerationForPos(pos));
                 }
-                lastPos[0] += speedPredictionX;
-                lastPos[1] += speedPredictionY;
-                posPrediction.add(lastPos);
+                pos = pos.add(speed);
+                posPrediction.add(pos);
+                speedPrediction.add(speed);
             }
         }
     }
@@ -121,5 +93,29 @@ public abstract class MobileEntity extends Entity {
             flushPrediction();
         }
         this.predictionTicks = predictionTicks;
+    }
+
+    public Vektor2f getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(Vektor2f speed) {
+        this.speed = speed;
+    }
+
+    public Vektor2f getFactor() {
+        return factor;
+    }
+
+    public void setFactor(Vektor2f factor) {
+        this.factor = factor;
+    }
+
+    public LinkedList<Vektor2f> getPosPrediction() {
+        return posPrediction;
+    }
+
+    public LinkedList<Vektor2f> getSpeedPrediction() {
+        return speedPrediction;
     }
 }

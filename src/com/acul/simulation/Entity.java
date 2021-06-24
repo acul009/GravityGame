@@ -2,12 +2,12 @@ package com.acul.simulation;
 
 public abstract class Entity {
 
+    private Vektor2f pos;
     private float posX, posY, size;
     private String textureName;
 
-    public Entity(float posX, float posY, float size, String textureName) {
-        this.posX = posX;
-        this.posY = posY;
+    public Entity(Vektor2f pos, float size, String textureName) {
+        this.pos = pos;
         this.size = size;
         this.textureName = textureName;
     }
@@ -20,28 +20,19 @@ public abstract class Entity {
         this.size = size;
     }
 
-    public float getPosX() {
-        return posX;
-    }
-
-    public void setPosX(float posX) {
-        this.posX = posX;
-    }
-
-    public float getPosY() {
-        return posY;
-    }
-
-    public void setPosY(float posY) {
-        this.posY = posY;
-    }
-
-    public synchronized void moveBy(float x, float y) {
-        this.setPosX(this.getPosX() + x);
-        this.setPosY(this.getPosY() + y);
+    public synchronized void moveBy(Vektor2f diff) {
+        this.setPos(this.getPos().add(diff));
     }
 
     public String getTextureName() {
         return textureName;
+    }
+
+    public Vektor2f getPos() {
+        return pos;
+    }
+
+    public void setPos(Vektor2f pos) {
+        this.pos = pos;
     }
 }

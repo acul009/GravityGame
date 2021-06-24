@@ -26,7 +26,7 @@ public class Game {
     }
 
     private void addPlanets() {
-        planets.add(new Planet(0, 70, 50, 7, "Terran.png"));
+        planets.add(new Planet(new Vektor2f(0, 70), 50, 7, "Terran.png"));
     }
 
     public Vector<GravityEntity> getPlanets() {
@@ -49,7 +49,7 @@ public class Game {
     }
 
     private void addPlayer() {
-        player = new Player(0, 0);
+        player = new Player(new Vektor2f(0, 0));
         mobiles.add(player);
     }
 
@@ -61,10 +61,9 @@ public class Game {
     }
 
     private void applyPlayerControl() {
-        double[] mousePos = window.getRelativeMousePos();
+        Vektor2f mousePos = window.getRelativeMousePos();
         player.pointTowards(
-                (float) mousePos[0],
-                (float) mousePos[1],
+                mousePos,
                 window.getMouseButtonState(GLFW_MOUSE_BUTTON_LEFT),
                 window.getMouseButtonState(GLFW_MOUSE_BUTTON_RIGHT)
         );

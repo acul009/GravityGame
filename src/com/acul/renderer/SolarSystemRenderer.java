@@ -1,15 +1,9 @@
 package com.acul.renderer;
 
-import com.acul.gui.InitFailureException;
-import com.acul.gui.OrthographicRenderer;
-import com.acul.gui.Texture;
-import com.acul.gui.Window;
+import com.acul.gui.*;
 import com.acul.simulation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Vector;
+import java.util.*;
 
 public class SolarSystemRenderer extends OrthographicRenderer {
 
@@ -28,6 +22,7 @@ public class SolarSystemRenderer extends OrthographicRenderer {
         centerCameraOnPlayer();
         super.render();
 
+        renderPlayerPredictions();
         renderPlanets();
         renderMobiles();
     }
@@ -37,9 +32,8 @@ public class SolarSystemRenderer extends OrthographicRenderer {
         for (GravityEntity p : planets) {
             Texture tex = textures.get(p.getTextureName());
             float size = p.getSize();
-            float posX = p.getPosX() - size/2;
-            float posY = p.getPosY() - size/2;
-            tex.draw(posX, posY, size);
+            Vektor2f pos = p.getPos().sub(new Vektor2f(size/2, size/2));
+            tex.draw(pos.X, pos.Y, size);
         }
     }
 
@@ -48,10 +42,18 @@ public class SolarSystemRenderer extends OrthographicRenderer {
         for (MobileEntity m : mobiles) {
             Texture tex = textures.get(m.getTextureName());
             float size = m.getSize();
-            float posX = m.getPosX() - size/2;
-            float posY = m.getPosY() - size/2;
+            Vektor2f pos = m.getPos().sub(new Vektor2f(size/2, size/2));
             float rotation = m.getRotation();
-            tex.draw(posX, posY, size, m.getState() , rotation);
+            tex.draw(pos.X, pos.Y, size, m.getState() , rotation);
+        }
+    }
+
+    private void renderPlayerPredictions() {
+        Player p = game.getPlayer();
+        LinkedList<Vektor2f> posPredictions = p.getPosPrediction();
+        LinkedList<Vektor2f> speedPredictions = p.getSpeedPrediction();
+        for(int i = 0; i < posPredictions.size(); i++) {
+            PredictionPointer.drawPointer(posPredictions.get(i),1, speedPredictions.get(i).getRotation() );
         }
     }
 
@@ -68,8 +70,8 @@ public class SolarSystemRenderer extends OrthographicRenderer {
 
     private void centerCameraOnPlayer() {
         Player p = game.getPlayer();
-        double posX = p.getPosX() - this.getCameraWidth() / 2;
-        double posY = p.getPosY() - this.getCameraHeight() / 2;
-        this.setCameraPos(posX,posY);
+        Vektor2f cameraOffset = new Vektor2f((float) this.getCameraWidth() / 2, (float) this.getCameraHeight() / 2);
+        Vektor2f pos = p.getPos().sub(cameraOffset);
+        this.setCameraPos(pos.X,pos.Y);
     }
 }

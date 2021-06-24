@@ -3,9 +3,7 @@ package com.acul.simulation;
 public class Planet extends GravityEntity{
 
 
-
-    public Planet(float posX, float posY, float size, float mass, String textureName) {
-        super(posX, posY, size, mass, textureName);
+    public Planet(Vektor2f pos, float size, float mass, String textureName) {
+        super(pos, size, mass, textureName);
     }
-
 }

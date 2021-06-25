@@ -42,4 +42,10 @@ public class Vektor2f {
     public float getLength() {
         return (float) Math.sqrt(X*X + Y*Y);
     }
+
+    public Vektor2f rotate(float rotation) {
+        float newRotation = getRotation() + rotation;
+        float length = getLength();
+        return new Vektor2f((float) Math.cos(newRotation) * length, (float) Math.sin(newRotation) * length);
+    }
 }

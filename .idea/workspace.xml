@@ -9,20 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="007ca02b-0447-4acd-91ca-5121996aeb8f" name="Default Changelist" comment="prepared prediction">
-      <change afterPath="$PROJECT_DIR$/src/com/acul/gui/Scrolldetector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/acul/simulation/CollisionLine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/acul/simulation/CollisionRectangle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/acul/simulation/CollisionSphere.java" afterDir="false" />
+    <list default="true" id="007ca02b-0447-4acd-91ca-5121996aeb8f" name="Default Changelist" comment="First draft of prediction">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/acul/gui/PredictionPointer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/gui/PredictionPointer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/acul/gui/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/gui/Renderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/acul/gui/TestRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/gui/TestRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/acul/gui/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/gui/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/acul/renderer/SolarSystemRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/renderer/SolarSystemRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/acul/simulation/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/simulation/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/acul/simulation/MobileEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/simulation/MobileEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/acul/simulation/Planet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/simulation/Planet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/acul/simulation/CollisionRectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/simulation/CollisionRectangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/acul/simulation/CollisionSphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/simulation/CollisionSphere.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/acul/simulation/GravityEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/simulation/GravityEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/acul/simulation/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/simulation/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/acul/simulation/Vektor2f.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/acul/simulation/Vektor2f.java" afterDir="false" />
     </list>
@@ -51,14 +42,14 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/com/acul/AsteroidsMain.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/com/acul/Initializer.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/com/acul/gui/Renderer.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/com/acul/gui/TestRenderer.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/com/acul/gui/Texture.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/com/acul/renderer/SolarSystemRenderer.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/com/acul/gui/Texture.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/com/acul/gui/Application.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/com/acul/gui/Renderer.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/com/acul/gui/OrthographicRenderer.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/com/acul/Initializer.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/com/acul/AsteroidsMain.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1sq7JDOxzUBSBlablEFxM6UHHJR" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />

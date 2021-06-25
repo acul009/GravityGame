@@ -4,7 +4,7 @@ import java.security.cert.X509Certificate;
 
 public abstract class GravityEntity extends Entity {
 
-    private static final float gravConstant = 1;
+    public static final float gravConstant = 1;
     private float mass;
 
     public GravityEntity(Vektor2f pos, float size, float mass, String textureName) {

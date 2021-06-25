@@ -2,7 +2,7 @@ package com.acul.simulation;
 
 public class Player extends MobileEntity {
 
-    private static float acceleration = 0.001f;
+    private static final float acceleration = GravityEntity.gravConstant *  0.001f;
 
     public Player(Vektor2f pos) {
         super(pos, 5, "spaceship.png");

@@ -1,7 +1,5 @@
 package com.acul.simulation;
 
-import java.security.cert.X509Certificate;
-
 public abstract class GravityEntity extends Entity {
 
     public static final float gravConstant = 1;
@@ -14,7 +12,7 @@ public abstract class GravityEntity extends Entity {
 
     public Vektor2f calculateAccelerationForPos(Vektor2f target) {
         Vektor2f dist = this.getPos().sub(target);
-        float totalDist = (float) Math.sqrt(dist.X * dist.X + dist.Y * dist.Y);
+        float totalDist = dist.getLength ();
         float totalAcceleration = (this.getMass() * gravConstant) / (totalDist * totalDist);
         Vektor2f factor = dist.normalize();
         float accelerationX = (totalAcceleration * factor.X);

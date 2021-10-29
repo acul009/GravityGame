@@ -1,13 +1,17 @@
 package com.acul.simulation;
 
-public class CollisionRectangle {
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-    private Vektor2f topLeft, topRight, bottomRight, bottomLeft;
+public class CollisionRectangle implements CollisionBox {
+
+    private Vektor2f size,center, topLeft, topRight, bottomRight, bottomLeft;
     private CollisionLine[] lineCache = null;
 
 
 
     public CollisionRectangle(Vektor2f center, Vektor2f size, float rotation) {
+        this.center = center;
+        this.size = size;
         Vektor2f offset = size.scale(0.5f);
         Vektor2f offsetTopRight = offset.rotate(rotation);
         Vektor2f offsetTopLeft = (new Vektor2f(-offset.X, offset.Y)).rotate(rotation);
@@ -15,6 +19,13 @@ public class CollisionRectangle {
         topRight = offsetTopRight.add(center);
         bottomRight = offsetTopLeft.scale(-1).add(center);
         bottomLeft = offsetTopRight.scale(-1).add(center);
+    }
+
+    public CollisionRectangle(Vektor2f topLeft, Vektor2f topRight, Vektor2f bottomRight, Vektor2f bottomLeft) {
+        this.topLeft = topLeft;
+        this.topRight = topRight;
+        this.bottomRight = bottomRight;
+        this.bottomLeft = bottomLeft;
     }
 
     public Vektor2f getTopLeft() {
@@ -46,16 +57,39 @@ public class CollisionRectangle {
         return lines;
     }
 
+    @Override
+    public boolean collidesWith(CollisionSphere target) {
+        return forwardCollision(target);
+    }
+
     public boolean collidesWith(CollisionRectangle target) {
+        return forwardCollision(target);
+    }
+
+    @Override
+    public boolean collidesWith(CollisionLine target) {
+        return forwardCollision(target);
+    }
+
+    private boolean forwardCollision(CollisionBox target) {
         CollisionLine[] myLines = this.getCollisionLines();
-        CollisionLine[] targetLines = target.getCollisionLines();
-        for(int i = 0; i < myLines.length; i++) {
-            for (int j = 0; j < targetLines.length; j++) {
-                if(myLines[i].collidesWith(targetLines[j])) {
-                    return true;
-                }
+        for (CollisionLine myLine : myLines) {
+            if (target.collidesWith(myLine)) {
+                return true;
             }
         }
         return false;
+    }
+
+    public void move(Vektor2f diff) {
+        center = center.add(diff);
+        topLeft = topLeft.add(diff);
+        topRight = topRight.add(diff);
+        bottomRight = bottomRight.add(diff);
+        bottomLeft = bottomLeft.add(diff);
+    }
+
+    public void rotate() {
+        throw new NotImplementedException();
     }
 }

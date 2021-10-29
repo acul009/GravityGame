@@ -1,8 +1,6 @@
 package com.acul.simulation;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
-public class CollisionSphere {
+public class CollisionSphere implements CollisionBox{
 
     private Vektor2f pos;
     private float radius;
@@ -15,6 +13,11 @@ public class CollisionSphere {
     public boolean collidesWith(CollisionSphere target) {
         float dist = target.getPos().sub(pos).getLength();
         return radius + target.getRadius() <= dist;
+    }
+
+    @Override
+    public boolean collidesWith(CollisionRectangle target) {
+        return target.collidesWith(this);
     }
 
     public boolean collidesWith(CollisionLine target) {

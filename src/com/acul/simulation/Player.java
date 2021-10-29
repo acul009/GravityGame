@@ -5,7 +5,7 @@ public class Player extends MobileEntity {
     private static final float acceleration = GravityEntity.gravConstant *  0.001f;
 
     public Player(Vektor2f pos) {
-        super(pos, 5, "spaceship.png");
+        super(pos, 10, "spaceship.png");
         setMaxPredictionTicks(5000);
         setMinPredictionTicks(300);
     }

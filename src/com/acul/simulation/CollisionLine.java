@@ -4,7 +4,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import static java.lang.Float.NaN;
 
-public class CollisionLine {
+public class CollisionLine implements CollisionBox {
 
     private final float start, end, gradient, offset;
     private boolean vertical = false;
@@ -56,16 +56,17 @@ public class CollisionLine {
     }
 
     public boolean collidesWith(CollisionSphere target) {
+        Vektor2f targetPos = target.getPos();
 
         if(vertical) {
-            throw new NotImplementedException();
+            float targetOffset = target.getOffsetAt(this.offset);
+            return this.start > targetPos.Y + offset && this.end < targetPos.Y - offset;
         }
 
         float a1 = gradient * gradient;
         float b1 = gradient * offset * 2;
         float c1 = offset * offset;
 
-        Vektor2f targetPos = target.getPos();
 
         float a2 = -1;
         float b2 = 2 * targetPos.X;
@@ -95,5 +96,10 @@ public class CollisionLine {
         c2 = (float) Math.sqrt(c2);
         c2 -= b1;
         return c2 > this.start && c2 < this.end;
+    }
+
+    @Override
+    public boolean collidesWith(CollisionRectangle target) {
+        return target.collidesWith(this);
     }
 }

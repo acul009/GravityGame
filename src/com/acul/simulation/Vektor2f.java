@@ -31,7 +31,7 @@ public class Vektor2f {
     }
 
     public Vektor2f normalize() {
-        float length = (float) Math.sqrt(X * X + Y * Y);
+        float length = this.getLength();
         return new Vektor2f(X/length, Y/length);
     }
 

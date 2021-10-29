@@ -3,7 +3,7 @@ package com.acul.simulation;
 public abstract class Entity {
 
     private Vektor2f pos;
-    private float posX, posY, size;
+    private float size;
     private String textureName;
 
     public Entity(Vektor2f pos, float size, String textureName) {

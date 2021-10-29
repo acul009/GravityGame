@@ -26,8 +26,8 @@ public class Game {
     }
 
     private void addPlanets() {
-        planets.add(new Planet(new Vektor2f(0, 200), 50, 7, "Terran.png"));
-        planets.add(new Planet(new Vektor2f(0, -200), 50, 7, "Terran.png"));
+        planets.add(new Planet(new Vektor2f(0, 200), 50, 50, "Terran.png"));
+        planets.add(new Planet(new Vektor2f(0, -200), 50, 50, "Terran.png"));
     }
 
     public Vector<GravityEntity> getPlanets() {
